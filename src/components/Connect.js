@@ -10,10 +10,10 @@ const Connect = () => {
     e.preventDefault();
     emailjs
       .sendForm(
-        'YOUR_SERVICE_ID', // Replace with your Email.js service ID
-        'YOUR_TEMPLATE_ID', // Replace with your Email.js template ID
+        process.env.REACT_APP_EMAILJS_SERVICE_ID,
+        process.env.REACT_APP_EMAILJS_TEMPLATE_ID,
         formRef.current,
-        'YOUR_USER_ID' // Replace with your Email.js user ID
+        process.env.REACT_APP_EMAILJS_USER_ID
       )
       .then(
         (result) => {
