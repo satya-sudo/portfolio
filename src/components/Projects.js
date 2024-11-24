@@ -18,15 +18,15 @@ const projects = [
     description:
       "A sorting algorithm visualizer tool that shows the steps of sorting algorithms in graphical form.",
     image: `${process.env.PUBLIC_URL}/assets/visvual.png`,
-    github: "https://github.com/yourgithub/visual-sort",
-    demo: "https://yourdemo.com/visual-sort",
+    github: "https://github.com/satya-sudo/visual-sort",
+    demo: "https://visual-sort-satya-sudo.vercel.app/",
   },
   {
     title: "PassVault",
     description:
       "A secure password storage system with encryption, available as both web and CLI interfaces.",
     image: `${process.env.PUBLIC_URL}/assets/pass.png`,
-    github: "https://github.com/yourgithub/passvault",
+    github: "https://github.com/satya-sudo/PASSVAULT_WEB",
     demo: "https://yourdemo.com/passvault",
   },
   {
@@ -34,23 +34,23 @@ const projects = [
     description:
       "A URL shortener with an advanced dashboard for URL statistics, built using Django and React.",
     image: `${process.env.PUBLIC_URL}/assets/shorty.png`,
-    github: "https://github.com/yourgithub/storty",
-    demo: "https://yourdemo.com/storty",
+    github: "https://github.com/satya-sudo/Shorty_BE",
+    demo: "https://shorty-fe.vercel.app/",
   },
   {
     title: "Angels with paws",
     description:
       "Web page for ngo for rescue dogs (Free lance)",
     image: `${process.env.PUBLIC_URL}/assets/awp.png`,
-    github: "https://github.com/yourgithub/storty",
-    demo: "https://yourdemo.com/storty",
+    github: "https://github.com/satya-sudo/angleswithpaws",
+    demo: "https://angleswithpaws.vercel.app/",
   },
   {
     title: "Lan Blob store and video streamer",
     description:
       "Lan based, Blob store and video streamer.",
     image: `${process.env.PUBLIC_URL}/assets/placeholder.png`,
-    github: "https://github.com/yourgithub/storty",
+    github: "https://github.com/satya-sudo/lan_blob_store",
     demo: "https://yourdemo.com/storty",
   },
 ];
