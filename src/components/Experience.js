@@ -3,11 +3,18 @@ import {
   Box,
   Typography,
   Avatar,
-  Grid,
   Paper,
   ThemeProvider,
   createTheme,
 } from "@mui/material";
+import {
+  Timeline,
+  TimelineItem,
+  TimelineSeparator,
+  TimelineDot,
+  TimelineConnector,
+  TimelineContent,
+} from "@mui/lab";
 
 export const darkTheme = {
   background: "#121212",
@@ -27,9 +34,6 @@ const theme = createTheme({
     primary: {
       main: darkTheme.accent,
     },
-    // secondary: {
-    //     secondary: darkTheme.secondary,
-    // }
   },
   typography: {
     fontFamily: "Arial, sans-serif",
@@ -114,49 +118,40 @@ const experiences = [
 ];
 
 const ExperienceTimeline = () => {
-    return (
-      <ThemeProvider theme={theme}>
-        <Box
-          sx={{
-            backgroundColor: theme.palette.background.default,
-            color: theme.palette.text.primary,
-            minHeight: "100vh",
-            padding: "20px",
-          }}
-          id="experience"
-        >
-          <Typography variant="h4" align="center" gutterBottom>
-            Experience
-          </Typography>
-          <Grid container spacing={3}>
-            {experiences.map((exp, index) => (
-              <Grid
-                key={index}
-                item
-                xs={12}
-                sx={{
-                  display: "flex",
-                  flexDirection: index % 2 === 0 ? "row" : "row-reverse",
-                  alignItems: "center",
-                }}
-              >
-                <Avatar
-                  src={exp.logo}
-                  alt={`${exp.company} Logo`}
-                  sx={{
-                    width: 80,
-                    height: 80,
-                    margin: "0 20px",
-                    backgroundColor: theme.palette.primary.main,
-                  }}
-                />
+  return (
+    <ThemeProvider theme={theme}>
+      <Box
+        sx={{
+          backgroundColor: theme.palette.background.default,
+          color: theme.palette.text.primary,
+          minHeight: "100vh",
+          padding: "20px",
+        }}
+        id="experience"
+      >
+        <Typography variant="h4" align="center" gutterBottom>
+          Experience
+        </Typography>
+        <Timeline position="alternate-reverse">
+          {experiences.map((exp, index) => (
+            <TimelineItem key={index}>
+              <TimelineSeparator>
+                <TimelineDot color="primary">
+                  <Avatar
+                    src={exp.logo}
+                    alt={`${exp.company} Logo`}
+                    sx={{ width: 40, height: 40 }}
+                  />
+                </TimelineDot>
+                {index < experiences.length - 1 && <TimelineConnector />}
+              </TimelineSeparator>
+              <TimelineContent>
                 <Paper
                   elevation={3}
                   sx={{
                     backgroundColor: darkTheme.secondary,
                     color: darkTheme.text,
                     padding: "20px",
-                    flex: 1,
                   }}
                 >
                   <Typography variant="h6" color={theme.palette.primary.main}>
@@ -166,9 +161,7 @@ const ExperienceTimeline = () => {
                   <Typography variant="body2" color={theme.palette.primary.main}>
                     {exp.type} | {exp.duration}
                   </Typography>
-                  <Typography variant="body2" >
-                    {exp.location}
-                  </Typography>
+                  <Typography variant="body2">{exp.location}</Typography>
                   <ul>
                     {exp.details.map((detail, idx) => (
                       <li key={idx}>
@@ -177,12 +170,13 @@ const ExperienceTimeline = () => {
                     ))}
                   </ul>
                 </Paper>
-              </Grid>
-            ))}
-          </Grid>
-        </Box>
-      </ThemeProvider>
-    );
-  };
-  
-  export default ExperienceTimeline;
+              </TimelineContent>
+            </TimelineItem>
+          ))}
+        </Timeline>
+      </Box>
+    </ThemeProvider>
+  );
+};
+
+export default ExperienceTimeline;

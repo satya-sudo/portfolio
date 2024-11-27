@@ -3,8 +3,9 @@ import { Box, Drawer, List, ListItem, ListItemText, Typography } from '@mui/mate
 import { Link } from 'react-scroll';
 import ResumeDownloadChip from './ResumeDownloadChip';
 
-const Sidebar = () => {
+const Sidebar = (props) => {
   const drawerWidth = 240;
+  const color = (text) => props.selected === text ? '#64ffd':'#e0e0e0';
 
   return (
     <Drawer
@@ -45,9 +46,10 @@ const Sidebar = () => {
         {['About Me', 'Experience', 'Projects', 'Skills', 'Connect'].map((text) => (
           <ListItem
             button
+            onClick={()=>props.setSelected(text)}
             key={text}
             sx={{
-              color: '#e0e0e0',
+              color: ()=> color(text),
               '&:hover': {
                 color: '#64ffda',
               },
@@ -65,7 +67,7 @@ const Sidebar = () => {
                 display: 'block',
               }}
             >
-              <ListItemText primary={text} />
+              <ListItemText primary={text}   onClick={()=>props.setSelected(text)} />
             </Link>
           </ListItem>
         ))}
