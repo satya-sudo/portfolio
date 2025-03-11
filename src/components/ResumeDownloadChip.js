@@ -5,7 +5,7 @@ import { Download } from "@mui/icons-material";
 
 const downloadFile = () => {
     const DownloadElement = document.createElement("a");
-    const fileName = "Satyamresume_overleaf.pdf"; // Replace with your file name
+    const fileName = "SATYAMSHREE20251.pdf"; // Replace with your file name
   
     DownloadElement.href = `${process.env.PUBLIC_URL}/assets/${fileName}`;
     DownloadElement.target = "_blank"; // Open in a new tab if required
