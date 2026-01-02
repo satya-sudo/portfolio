@@ -1,27 +1,47 @@
-import React, {useState} from 'react';
-import Sidebar from './components/Sidebar';
-import AboutMe from './components/AboutMe';
-import Skills from './components/Skills';
-import Experience from './components/Experience';
-import Projects from './components/Projects';
-import Connect from './components/Connect';
+import { useEffect } from 'react';
+import Sidebar from './components/layout/Sidebar';
 
-const App = () => {
-  const drawerWidth = 240;
-  const [selected, setSelected] = useState('About Me')
+import Hero from './components/sections/Hero';
+import Journey from './components/sections/Journey';
+import Systems from './components/sections/Systems';
+import Writing from './components/sections/Writing';
+import Beyond from './components/sections/Beyond';
+import Philosophy from './components/sections/Philosophy';
+import Connect from './components/sections/Connect';
+
+import './styles/global.css';
+import './styles/layout.css';
+import './styles/typography.css';
+import './styles/components.css';
+import './styles/sidebar.css';
+
+export default function App() {
+  useEffect(() => {
+    const sections = document.querySelectorAll('.section');
+    const observer = new IntersectionObserver(
+      entries => {
+        entries.forEach(e => {
+          if (e.isIntersecting) e.target.classList.add('is-visible');
+        });
+      },
+      { threshold: 0.15 }
+    );
+    sections.forEach(s => observer.observe(s));
+    return () => observer.disconnect();
+  }, []);
 
   return (
-    <div style={{ display: 'flex' }}>
-      <Sidebar selected={selected} setSelected={setSelected} />
-      <main style={{ margin:"0px 240px 0px 240px", padding: '20px', flexGrow: 1 }}>
-        <AboutMe />
-        <Experience />
-        <Projects />
-        <Skills />
+    <div className="page">
+      <Sidebar />
+      <main className="main">
+        <Hero />
+        <Journey />
+        <Systems />
+        <Writing />
+        <Beyond />
+        <Philosophy />
         <Connect />
       </main>
     </div>
   );
-};
-
-export default App;
+}

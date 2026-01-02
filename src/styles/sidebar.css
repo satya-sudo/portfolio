@@ -1,0 +1,30 @@
+.sidebar {
+    width: 240px;
+    padding: var(--space-lg) var(--space-md);
+    border-right: 1px solid rgba(255,255,255,0.08);
+    position: sticky;
+    top: 0;
+    height: 100vh;
+  }
+  
+  .sidebar nav {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-md);
+  }
+  
+  .sidebar a {
+    color: var(--text-muted);
+    font-size: 0.85rem;
+    transition: all 0.2s ease;
+  }
+  
+  .sidebar a:hover {
+    transform: translateX(4px);
+    color: var(--text-main);
+  }
+  
+  .sidebar a.active {
+    color: var(--text-main);
+  }
+  
