@@ -1,7 +1,7 @@
 .sidebar {
     width: 240px;
     padding: var(--space-lg) var(--space-md);
-    border-right: 1px solid rgba(255,255,255,0.08);
+    border-right: 1px solid rgba(255, 255, 255, 0.08);
     position: sticky;
     top: 0;
     height: 100vh;
@@ -15,12 +15,13 @@
   
   .sidebar a {
     color: var(--text-muted);
-    font-size: 0.85rem;
-    transition: all 0.2s ease;
+    text-decoration: none;
+    font-size: var(--fs-small);
+    position: relative;
+    transition: color 0.2s ease;
   }
   
   .sidebar a:hover {
-    transform: translateX(4px);
     color: var(--text-main);
   }
   
@@ -28,3 +29,32 @@
     color: var(--text-main);
   }
   
+  .sidebar a.active::before {
+    content: '';
+    position: absolute;
+    left: -12px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 4px;
+    height: 4px;
+    background: var(--accent);
+    border-radius: 50%;
+  }
+  
+  @media (max-width: 900px) {
+    .sidebar {
+      display: none;
+    }
+  }
+  .sidebar a {
+    color: var(--text-muted);
+    text-decoration: none;
+    font-size: var(--fs-small);
+    position: relative;
+    transition: color 0.2s ease, transform 0.2s ease;
+  }
+  
+  .sidebar a:hover {
+    color: var(--text-main);
+    transform: translateX(4px);
+  }

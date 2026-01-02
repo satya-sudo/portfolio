@@ -10,13 +10,18 @@
     flex-wrap: wrap;
   }
   
+  
+  .tag:hover {
+    border-color: var(--accent);
+    color: var(--text-main);
+  }
   .tag {
-    font-size: 0.85rem;
-    padding: 4px 12px;
-    border-radius: 999px;
-    border: 1px solid rgba(255,255,255,0.12);
+    font-size: var(--fs-small);
     color: var(--text-muted);
-    transition: all 0.3s ease;
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    padding: 4px 10px;
+    border-radius: 999px;
+    transition: border-color 0.3s ease, color 0.3s ease;
   }
   
   .tag:hover {
@@ -42,5 +47,26 @@
   
   .editorial-link:hover::after {
     width: 100%;
+  }
+  /* =========================
+   CURSOR GLOW
+========================= */
+
+.cursor-glow {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 220px;
+    height: 220px;
+    pointer-events: none;
+    background: radial-gradient(
+      circle,
+      rgba(199, 167, 108, 0.08),
+      transparent 60%
+    );
+    transform: translate(-50%, -50%);
+    opacity: 0;
+    transition: opacity 0.4s ease;
+    z-index: 0;
   }
   

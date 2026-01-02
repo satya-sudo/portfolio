@@ -1,46 +1,63 @@
-import { useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 
 const sections = [
-  ['hero', 'Identity'],
-  ['journey', 'Journey'],
-  ['systems', 'Systems'],
-  ['writing', 'Writing'],
-  ['beyond', 'Beyond'],
-  ['philosophy', 'Philosophy'],
-  ['connect', 'Connect']
+  { id: 'hero', label: 'Identity' },
+  { id: 'journey', label: 'Journey' },
+  { id: 'systems', label: 'Systems' },
+  { id: 'writing', label: 'Writing' },
+  { id: 'beyond', label: 'Beyond' },
+  { id: 'philosophy', label: 'Philosophy' },
+  { id: 'connect', label: 'Connect' }
 ];
 
-export default function Sidebar() {
+const Sidebar = () => {
   const [active, setActive] = useState('hero');
 
   useEffect(() => {
-    const onScroll = () => {
+    const handleScroll = () => {
       let current = 'hero';
-      sections.forEach(([id]) => {
+
+      sections.forEach(({ id }) => {
         const el = document.getElementById(id);
-        if (el && el.getBoundingClientRect().top <= 120) {
+        if (!el) return;
+
+        const rect = el.getBoundingClientRect();
+        if (rect.top <= 120) {
           current = id;
         }
       });
+
       setActive(current);
     };
-    window.addEventListener('scroll', onScroll);
-    onScroll();
-    return () => window.removeEventListener('scroll', onScroll);
+
+    window.addEventListener('scroll', handleScroll);
+    handleScroll();
+
+    return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
   return (
     <aside className="sidebar">
-      <h3>Satyam</h3>
-      <p className="text-muted small">Software Engineer</p>
+      {/* Identity */}
+      <div style={{ marginBottom: '64px' }}>
+        <h3 style={{ fontWeight: 500 }}>Satyam</h3>
+        <p className="text-muted small">Software Engineer</p>
+      </div>
 
+      {/* Navigation */}
       <nav>
-        {sections.map(([id, label]) => (
-          <a key={id} href={`#${id}`} className={active === id ? 'active' : ''}>
+        {sections.map(({ id, label }) => (
+          <a
+            key={id}
+            href={`#${id}`}
+            className={active === id ? 'active' : ''}
+          >
             {label}
           </a>
         ))}
       </nav>
     </aside>
   );
-}
+};
+
+export default Sidebar;
